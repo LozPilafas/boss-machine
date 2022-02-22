@@ -8,7 +8,7 @@ const meetingsRouter=express.Router()
 const workRouter=express.Router({mergeParams:true})
 const morgan=require('morgan')
 const {getAllFromDatabase,addToDatabase,getFromDatabaseById,updateInstanceInDatabase, deleteFromDatabasebyId,createMeeting,deleteAllFromDatabase} =require('./db.js')
-
+const  checkMillionDollarIdea   =require('./checkMillionDollarIdea')
 
 
 //MINIONS MIDDLEWARE
@@ -193,7 +193,7 @@ ideasRouter.get('/',(req,res,next)=>
     res.send(getAllFromDatabase('ideas'))
 })
 
-ideasRouter.post('/',checkData,(req,res,next)=>
+ideasRouter.post('/',checkMillionDollarIdea,checkData,(req,res,next)=>
 {
     
     
